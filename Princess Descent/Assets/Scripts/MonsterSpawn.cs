@@ -28,7 +28,7 @@ public class MonsterSpawn : MonoBehaviour {
             {
                 if (monstersSpawned < floorMonsters.maxMonsterCount)
                 {
-                    Instantiate(floorMonsters.monster[Random.Range(0, floorMonsters.monster.Length + 1)]);
+                    Instantiate(floorMonsters.monster[Random.Range(0, floorMonsters.monster.Length/* + 1*/)]);
                     monsterDead = false;
                     monstersSpawned += 1;
                 }

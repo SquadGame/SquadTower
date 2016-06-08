@@ -4,21 +4,29 @@ using UnityEngine.UI;
 
 public class Monster : MonoBehaviour {
 
-    private Text HealthDisplay;
-    public int Health = 100;
+    private Text healthDisplayText;
+    public int startingHealth = 100;
+    private Image healthDisplay;
+    public float currentHealth;
+    public int gold = 10;
 
     void Start() {
-
-        HealthDisplay = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
+        
+        healthDisplay = GameObject.FindGameObjectWithTag("Health").GetComponent<Image>();
+        healthDisplayText = healthDisplay.GetComponentInChildren<Text>();
+        currentHealth = startingHealth;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        HealthDisplay.text = "Health: " + Health;
+        healthDisplayText.text = currentHealth.ToString();
 
-        if (Health <= 0)
+        healthDisplay.fillAmount = (currentHealth / startingHealth);
+
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
 	}
+
 }

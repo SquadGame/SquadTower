@@ -6,8 +6,12 @@ public class Attack : MonoBehaviour {
 
     private Monster monster = null;
     public int clickDamage = 1;
+    private Gold gold;
 
-
+    void Start()
+    {
+        gold = GameObject.FindGameObjectWithTag("Gold").GetComponent<Gold>();
+    }
 
     // Update is called once per frame
     void Update() {
@@ -19,9 +23,11 @@ public class Attack : MonoBehaviour {
 
     public void MonsterHit(){
 
-        monster.Health -= clickDamage;
-        if (monster.Health == 0)
+        monster.currentHealth -= clickDamage;
+        if (monster.currentHealth == 0)
         {
+            gold.AddGold(monster.gold);
+
             monster = null;
         }
 
